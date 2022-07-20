@@ -1,4 +1,4 @@
-require( 'dotenv' ).config();
+// require( 'dotenv' ).config();
 
 const express = require('express');
 const cors = require('cors');
@@ -8,6 +8,8 @@ const warehousesRoute = require('./routes/warehouseList')
 const app = express();
 
 app.use(cors());
+app.use(express.json())
+
 
 app.use('/warehouses', warehousesRoute)
 
@@ -18,6 +20,6 @@ app.get('/', (req, res) => {
   res.send('hello')
 })
 
-app.listen(PORT, () => {
+app.listen(8080, () => {
   console.log('Listening on port 8080');
 });
