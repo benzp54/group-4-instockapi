@@ -8,6 +8,8 @@ const warehousesRoute = require('./routes/warehouseList')
 const app = express();
 
 app.use(cors());
+app.use(express.json())
+
 
 app.use('/warehouses', warehousesRoute)
 
