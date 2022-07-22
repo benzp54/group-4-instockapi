@@ -12,6 +12,8 @@ const warehouseList = warehouseData.map(value => ({
     contact: value.contact
 }))
 
+//GET request to get warehouse list
+
 router.get('/', (req, res) => {
     res.send(warehouseList)
     console.log('TEST2')
