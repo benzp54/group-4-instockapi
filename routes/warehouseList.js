@@ -58,13 +58,12 @@ router.post('/',(req,res)=> {
     res.send(newData)
 })
 
-//GET request get inventory list for specific warehouse
+//GET inventory list for specific warehouse
 
-router.get('/inventory', (req, res) => {
+router.get('/:id', (req, res) => {
     const { id } = req.params;
-    console.log(req.params)
-    const clickedWarehouse = inventoryData.find((warehouse) => warehouse.warehouseId === id);
-    res.send(clickedWarehouse);
+    const clickedWarehouse = inventoryList.filter((warehouse) => warehouse.warehouseID === id);
+    res.send(clickedWarehouse)
 })
 
 module.exports = router;
