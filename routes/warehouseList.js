@@ -2,6 +2,7 @@ const express = require('express');
 const fs = require('fs');
 const router = express.Router();
 const warehouseData = require('../warehouses.json')
+const inventoryData = require('../inventories.json')
 const { v4: newId } = require('uuid');
 const path = require("path");
 
@@ -13,6 +14,19 @@ const warehouseList = warehouseData.map(value => ({
     country: value.country,
     contact: value.contact
 }))
+
+const inventoryList = inventoryData.map(value => ({
+    id: value.id,
+    warehouseID: value.warehouseID,
+    warehouseName: value.warehouseName,
+    itemName: value.itemName,
+    description: value.description,
+    category: value.category,
+    status: value.status,
+    quantity: value.quantity
+}))
+
+//GET request to get warehouse list
 
 router.get('/', (req, res) => {
     res.send(warehouseList)
@@ -42,6 +56,14 @@ router.post('/',(req,res)=> {
     })
 
     res.send(newData)
+})
+
+//GET inventory list for specific warehouse
+
+router.get('/:id', (req, res) => {
+    const { id } = req.params;
+    const clickedWarehouse = inventoryList.filter((warehouse) => warehouse.warehouseID === id);
+    res.send(clickedWarehouse)
 })
 
 module.exports = router;
