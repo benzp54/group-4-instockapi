@@ -6,12 +6,12 @@ const PORT = process.env.PORT;
 const warehousesRoute = require("./routes/warehouseList");
 
 const app = express();
-
+const inventoryRoute = require("./routes/inventoryList");
 app.use(cors());
 app.use(express.json());
 
 app.use("/warehouses", warehousesRoute);
-app.use("/warehouses", warehousesRoute);
+app.use("/inventory", inventoryRoute);
 
 //GET request to check if the server is running
 
