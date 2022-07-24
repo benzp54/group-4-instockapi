@@ -34,9 +34,10 @@ router.get('/', (req, res) => {
 })
 
 router.post('/',(req,res)=> {
+    console.log(req.body);
     let newWarehouse = {
         "id": newId(),
-        "name":req.body.name,
+        "watehouseName":req.body.name,
         "address":req.body.address, 
         "city": req.body.city,
         "country": req.body.country,
