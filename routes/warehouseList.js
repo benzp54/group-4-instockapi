@@ -63,7 +63,15 @@ router.post('/',(req,res)=> {
 router.get('/:id', (req, res) => {
     const { id } = req.params;
     const clickedWarehouse = inventoryList.filter((warehouse) => warehouse.warehouseID === id);
-    res.send(clickedWarehouse)
+      res.send(clickedWarehouse);
 })
+
+router.get("/warehouse/:id", (req, res) => {
+    const { id } = req.params;
+    const clickedWarehouse = warehouseList.filter(
+      (warehouse) => warehouse.id === id
+    );
+    res.send(clickedWarehouse);
+  });
 
 module.exports = router;
